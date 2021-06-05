@@ -5,7 +5,44 @@ o singura data:
 ---pentru eroare aparuta in acest punc(https://stackoverflow.com/questions/40459280/docker-cannot-start-on-windows) trebuie deschisa aplicatia docker si pornit "engine"
 
 pentru fiecare containerizare:
-!!!instalare imagine pentru tipul aplicatiei. Ex: imagine docker pentru node, java, linux, etc
+!!!instalare imagine pentru tipul aplicatiei: https://hub.docker.com/  
+Ex: imagine docker pentru node, java, linux, etc
+Ex java: https://hub.docker.com/_/openjdk
+
+
 1. creare folder pentru docker
 2. copiere aplicatie
-3. creare fisier fara extensie cu numele "Dockerfile"
+3. creare fisier fara extensie cu numele "Dockerfile" cu textul de mai jos:
+  FROM openjdk:8-jdk-alpine
+  ARG JAR_FILE=target/*.jar
+  COPY ${ioTech_ecran} ioTech_ecran.jar
+  ENTRYPOINT ["java","-jar","/ioTech_ecran.jar"]
+(java trebuie inlocuit cu imaginea potrivita. 
+ iotech.jar trebuie inlocuit cu app dumneavoastra)
+4. din cmd(current directory): docker build -t hello-docker .
+5. pentru verificare daca a fost adaugata imaginea: docker images
+6. rulare: docker run hello-docker
+
+
+
+
+comenzi:
+1. stergere imagine specifica: docker rmi Image hello-docker
+2. stergere totala de containere,imagini, etc: docker system prune
+3. 
+
+
+
+altele:
+1. pentru app java trebuie adaugat pluginul in maven:
+          <plugin>
+             <groupId>com.spotify</groupId>
+             <artifactId>dockerfile-maven-plugin</artifactId>
+             <version>1.4.9</version>
+             <configuration>
+                <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                <buildArgs>
+                   <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                </buildArgs>
+             </configuration>
+          </plugin>
