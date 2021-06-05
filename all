@@ -1,0 +1,11 @@
+o singura data:
+1. instalare docker windows: https://docs.docker.com/docker-for-windows/install/
+2. instalare kernel linux pe windows: https://docs.microsoft.com/ro-ro/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package
+3. verificare versiune docker: docker version
+---pentru eroare aparuta in acest punc(https://stackoverflow.com/questions/40459280/docker-cannot-start-on-windows) trebuie deschisa aplicatia docker si pornit "engine"
+
+pentru fiecare containerizare:
+!!!instalare imagine pentru tipul aplicatiei. Ex: imagine docker pentru node, java, linux, etc
+1. creare folder pentru docker
+2. copiere aplicatie
+3. creare fisier fara extensie cu numele "Dockerfile"
