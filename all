@@ -13,10 +13,18 @@ Ex java: https://hub.docker.com/_/openjdk
 1. creare folder pentru docker
 2. copiere aplicatie
 3. creare fisier fara extensie cu numele "Dockerfile" cu textul de mai jos:
+
   FROM openjdk:8-jdk-alpine
-  ARG JAR_FILE=target/*.jar
-  COPY ${ioTech_ecran} ioTech_ecran.jar
+  ADD ioTech_ecran.jar ioTech_ecran.jar
+  EXPOSE 80   # folosim pentru run: docker run -p 80:80 hello-docker
   ENTRYPOINT ["java","-jar","/ioTech_ecran.jar"]
+  
+  V2. NU functioneaza cum trebuie:
+    FROM openjdk:8-jdk-alpine
+    ARG JAR_FILE=target/*.jar
+    COPY ${ioTech_ecran.jar} ioTech_ecran.jar
+    ENTRYPOINT ["java","-jar","/ioTech_ecran.jar"]
+
 (java trebuie inlocuit cu imaginea potrivita. 
  iotech.jar trebuie inlocuit cu app dumneavoastra)
 4. din cmd(current directory): docker build -t hello-docker .
