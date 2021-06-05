@@ -11,22 +11,25 @@ Ex java: https://hub.docker.com/_/openjdk
 
 
 1. creare folder pentru docker
-2. copiere aplicatie
+2. copiere aplicatie in locatia curenta
 3. creare fisier fara extensie cu numele "Dockerfile" cu textul de mai jos:
-
+  #aici practic ii dam lui docker informatiile necesare pentru a crea o imagine
+  
   FROM openjdk:8-jdk-alpine
   ADD ioTech_ecran.jar ioTech_ecran.jar
-  EXPOSE 80   # folosim pentru run: docker run -p 80:80 hello-docker
+  EXPOSE 8085  # portul spring. Trebuie sa fie identic cu cel setat in app in application.properties: server.port=8085
   ENTRYPOINT ["java","-jar","/ioTech_ecran.jar"]
+  # folosim pentru run: docker run -p 8085:8085 hello-docker
   
-  V2. NU functioneaza cum trebuie:
+  #####V2. NU functioneaza cum trebuie:#####
     FROM openjdk:8-jdk-alpine
     ARG JAR_FILE=target/*.jar
     COPY ${ioTech_ecran.jar} ioTech_ecran.jar
     ENTRYPOINT ["java","-jar","/ioTech_ecran.jar"]
-
-(java trebuie inlocuit cu imaginea potrivita. 
- iotech.jar trebuie inlocuit cu app dumneavoastra)
+  #info punct 3:
+  (java trebuie inlocuit cu imaginea potrivita. 
+   iotech.jar trebuie inlocuit cu app dumneavoastra)
+ 
 4. din cmd(current directory): docker build -t hello-docker .
 5. pentru verificare daca a fost adaugata imaginea: docker images
 6. rulare: docker run hello-docker
@@ -37,20 +40,9 @@ Ex java: https://hub.docker.com/_/openjdk
 comenzi:
 1. stergere imagine specifica: docker rmi Image hello-docker
 2. stergere totala de containere,imagini, etc: docker system prune
-3. 
+3. lista containere care ruleaza: docker ps
+4. pauza: docker pause 6231c74c124a #unde 6231c74c124a  este id-ul CONTAINERULUI
+5. reluare dupa pauza: docker unpause 6231c74c124a
+6. stop: docker stop 6231c74c124a
+7. reluare dupa stop: docker start 6231c74c124a
 
-
-
-altele:
-1. pentru app java trebuie adaugat pluginul in maven:
-          <plugin>
-             <groupId>com.spotify</groupId>
-             <artifactId>dockerfile-maven-plugin</artifactId>
-             <version>1.4.9</version>
-             <configuration>
-                <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                <buildArgs>
-                   <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                </buildArgs>
-             </configuration>
-          </plugin>
