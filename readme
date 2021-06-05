@@ -1,6 +1,7 @@
 EXEMPLU PENTRU FOLDERUL DIN ACEST PROIECT...Aplicatia JAR este fake
 
 o singura data:
+# tutorial exemplu(nodeJS): https://www.youtube.com/watch?v=pTFZFxd4hOI
 1. instalare docker windows: https://docs.docker.com/docker-for-windows/install/
 2. instalare kernel linux pe windows: https://docs.microsoft.com/ro-ro/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package
 3. verificare versiune docker: docker version
