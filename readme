@@ -48,4 +48,25 @@ comenzi:
 5. reluare dupa pauza: docker unpause 6231c74c124a
 6. stop: docker stop 6231c74c124a
 7. reluare dupa stop: docker start 6231c74c124a
+8. oprire docker service: sudo service docker stop
+9. pornire docker service: sudo service docker start
+10. stergere totala orice imagine, etc: docker system prune -a --volumes
+
+export(salvare) si import pe alta masina
+!!! mutare prin docker, trebuie facut cont aici: https://labs.play-with-docker.com/ !!!
+1. salvare imagine docker in local:  docker save --output="C:\users\aceasta\este\locatia\iotech_8085.tar" 6231c74c124a
+2. incarcare din masina2(ex vps): docker load --input iotech.tar
+3. redenumire imagine, daca aceasta este NONE: Docker tag new_repository:new_tag
+4. redenumire imagine, la fel ca in 3: docker image tag d583c3ac45fd iotech_8085/iotech_8085
+
+instalare docker pe ubuntu(digial ocean ex):  https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+1. dezinstalare versiune veche(daca exista): sudo apt-get remove docker docker-engine docker.io containerd runc
+2. sudo apt install apt-transport-https ca-certificates curl software-properties-common
+3. curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+4. sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+5. sudo apt update
+6. apt-cache policy docker-ce
+7. instalare docker: sudo apt install docker-ce
+8. verificare daca ruleaza: sudo systemctl status docker
+9. 
 
