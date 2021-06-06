@@ -1,4 +1,6 @@
 EXEMPLU PENTRU FOLDERUL DIN ACEST PROIECT...Aplicatia JAR este fake
+hello-docker = imagine
+iotech_8085 = imagine
 
 o singura data:
 # tutorial exemplu(nodeJS): https://www.youtube.com/watch?v=pTFZFxd4hOI
@@ -51,6 +53,8 @@ comenzi:
 8. oprire docker service: sudo service docker stop
 9. pornire docker service: sudo service docker start
 10. stergere totala orice imagine, etc: docker system prune -a --volumes
+11. pornire automata docker la restartare ubuntu: sudo systemctl enable docker
+12. pornire container automat la restartare ubuntu: docker run -dit --restart unless-stopped iotech_ecran
 
 export(salvare) si import pe alta masina
 !!! mutare prin docker, trebuie facut cont aici: https://labs.play-with-docker.com/ !!!
