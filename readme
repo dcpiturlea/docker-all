@@ -74,3 +74,5 @@ instalare docker pe ubuntu(digial ocean ex):  https://www.digitalocean.com/commu
 8. verificare daca ruleaza: sudo systemctl status docker
 9. 
 
+linkuri intre containere:
+1. spring to mysql: docker run --name demo --link mysql:mysql -p 8080:8080 demo
